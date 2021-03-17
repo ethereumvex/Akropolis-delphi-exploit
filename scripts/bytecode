@@ -1,0 +1,1564 @@
+0x02908e5f00000000000000000000000000000000000000000000000000000000000000600000000000000000000000007967ada2a32a633d5c055e2e075a83023b632b4e0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000664656c7068690000000000000000000000000000000000000000000000000000
+
+^^ '7967ada2a32a633d5c055e2e075a83023b632b4e' = CurveFiProtocol_Y
+^^ '0x664656c706869' = '1799236634044521'
+
+def unknown02908e5f(array _param1, uint256 _param2, uint256 _param3) payable: 
+  require calldata.size - 4 >=′ 96
+  require _param1 <= 18446744073709551615 // unsigned 64
+  require _param1 + 35 <′ calldata.size
+  require _param1.length <= 18446744073709551615 // unsigned 64
+  require ceil32(_param1.length) + 128 >= 96 and ceil32(_param1.length) + 128 <= 18446744073709551615 
+  mem[96] = _param1.length
+  require _param1 + _param1.length + 36 <= calldata.size
+  mem[128 len _param1.length] = _param1[all]
+  mem[_param1.length + 128] = 0
+  require _param2 == addr(_param2) // param 2 is an address ala eth or in the code?
+  require caller == stor4
+  mem[ceil32(_param1.length) + 160 len ceil32(_param1.length)] = _param1[all], mem[_param1.length + 128 len ceil32(_param1.length) - _param1.length]
+  if ceil32(_param1.length) <= _param1.length:
+      mem[ceil32(_param1.length) + 128] = _param1.length
+      require 0x3573d3b804dc64c2723a25c489ad31d6acfd3bb89ae03e9df018bea83b2a5b54 == sha3(mem[ceil32(_param1.length) + 160 len Mask(8 * -ceil32(_param1.length) + _param1.length + 32, 0, 0), mem[_param1.length + 160 len -_param1.length + ceil32(_param1.length)]])
+      stor0 = addr(_param2) // CurveFiProtocol_Y in storage during the hack block.
+      stor3 = _param3 // this has a value of 2 right now.
+      mem[_param1.length + ceil32(_param1.length) + 164] = addr(_param2)
+      require ext_code.size(stor5)
+      static call stor5.0x913dceb2 with: // poolTokenByProtocol; determine what pooltoken they need
+              gas gas_remaining wei
+             args addr(_param2)
+      mem[_param1.length + ceil32(_param1.length) + 160] = ext_call.return_data[0]
+      if not ext_call.success:
+          revert with ext_call.return_data[0 len return_data.size]
+      require return_data.size >=′ 32
+      require ext_call.return_data[0] == ext_call.return_data[12 len 20]
+      stor1 = ext_call.return_data[12 len 20]
+      if 0x91d7b9a8d2314110d4018c88dbfdcf5e2ba4772e == addr(_param2): // if CurveFiProtocol_SUSD
+          uint256(stor2.field_0) = 800000 * 10^18
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 164] = stor5
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 196] = -1
+          require ext_code.size(stor7)
+          call stor7.approve(address spender, uint256 tokens) with:
+               gas gas_remaining wei
+              args stor5, -1
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 160] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          require return_data.size >=′ 32
+          require ext_call.return_data[0] == bool(ext_call.return_data[0])
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 164] = this.address
+          require ext_code.size(stor7)
+          static call stor7.balanceOf(address tokenOwner) with:
+                  gas gas_remaining wei
+                 args this.address
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 160] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          mem[64] = _param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 160
+          require return_data.size >=′ 32
+          if ext_call.return_data[0] > uint256(stor2.field_0):
+              idx = 0
+              while idx < _param3:
+                  _600 = mem[64]
+                  mem[mem[64]] = 1
+                  mem[64] = mem[64] + 64
+                  require 0 < mem[_600]
+                  mem[_600 + 32] = this.address
+                  mem[_600 + 64] = 1
+                  mem[64] = _600 + 128
+                  mem[_600 + 96] = 5 * 10^6
+                  mem[_600 + 128] = 0x562fa0df00000000000000000000000000000000000000000000000000000000
+                  mem[_600 + 132] = stor0
+                  mem[_600 + 164] = 96
+                  mem[_600 + 228] = mem[_600]
+                  s = 0
+                  t = _600 + 32
+                  u = _600 + 260
+                  while s < mem[_600]:
+                      mem[u] = mem[t + 12 len 20]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  mem[_600 + 196] = (32 * mem[_600]) + 128
+                  mem[_600 + (32 * mem[_600]) + 260] = 1
+                  s = 0
+                  t = _600 + (32 * mem[_600]) + 292
+                  u = _600 + 96
+                  while s < 1:
+                      mem[t] = mem[u]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  require ext_code.size(stor5)
+                  call stor5.mem[mem[64] len 4] with:
+                       gas gas_remaining wei
+                      args mem[mem[64] + 4 len _600 + (32 * mem[_600]) + -mem[64] + 320]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  require ext_code.size(stor0)
+                  call stor0.0x628cb95e with: // normalizedBalance()
+                       gas gas_remaining wei
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1419 = mem[64] // normalized balance?
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1429 = mem[_1419]
+                  mem[mem[64] + 4] = this.address
+                  require ext_code.size(stor1)
+                  static call stor1.balanceOf(address tokenOwner) with:
+                          gas gas_remaining wei
+                         args addr(this.address)
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1469 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1487 = mem[_1469]
+                  if _1429 > mem[_1469]:
+                      if not mem[_1469]:
+                          _1540 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1540] = 26
+                          mem[_1540 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * mem[_1469] / mem[_1469] != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1570 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1570] = 26
+                          mem[_1570 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1487 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1487 / 100, 0
+                  else:
+                      if not _1429:
+                          _1541 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1541] = 26
+                          mem[_1541 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * _1429 / _1429 != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1571 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1571] = 26
+                          mem[_1571 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1429 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1429 / 100, 0
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  idx = idx + 1
+                  continue 
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _640 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_640] == bool(mem[_640])
+          else:
+              mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 164] = stor6
+              mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 196] = -1
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, -1
+              mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 160] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              require return_data.size >=′ 32
+              require ext_call.return_data[0] == bool(ext_call.return_data[0])
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160] = 3
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 320] = 0
+              mem[64] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 672
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 576] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 608] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 640] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 352] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 384] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 416] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 448] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 480] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 512] = 96
+              mem[var81002] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288
+              s = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 352
+              s = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288
+              s = var81002
+              idx = var81003
+              while idx - 1:
+                  _1360 = mem[64]
+                  mem[64] = mem[64] + 256
+                  mem[_1360] = 0
+                  mem[_1360 + 32] = 0
+                  mem[64] = mem[64] + 128
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 576] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 608] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 640] = 0
+                  mem[_1360 + 64] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544
+                  mem[_1360 + 96] = 0
+                  mem[_1360 + 128] = 0
+                  mem[_1360 + 160] = 0
+                  mem[_1360 + 192] = 0
+                  mem[_1360 + 224] = 96
+                  mem[s + 32] = _1360
+                  s = _1360 + 64
+                  s = _1360
+                  s = s + 32
+                  idx = idx - 1
+                  continue 
+              _1344 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1344] = 1
+              mem[_1344 + 32] = 0
+              _1345 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1345] = 0
+              mem[_1345 + 32] = 0
+              mem[_1345 + 64] = 0
+              mem[_1345 + 96] = uint256(stor2.field_0)
+              mem[_1344 + 64] = _1345
+              mem[_1344 + 96] = 3
+              mem[_1344 + 128] = 0
+              mem[_1344 + 160] = this.address
+              mem[_1344 + 192] = 0
+              _1346 = mem[64]
+              mem[64] = mem[64] + 32
+              mem[_1346] = 0
+              mem[_1344 + 224] = _1346
+              require 0 < mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 192] = _1344
+              _1361 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1361] = 8
+              mem[_1361 + 32] = 0
+              _1362 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1362] = 0
+              mem[_1362 + 32] = 0
+              mem[_1362 + 64] = 0
+              mem[_1362 + 96] = 0
+              mem[_1361 + 64] = _1362
+              mem[_1361 + 96] = 0
+              mem[_1361 + 128] = 0
+              mem[_1361 + 160] = this.address
+              mem[_1361 + 192] = 0
+              _1373 = mem[64]
+              mem[mem[64] + 32] = 32
+              mem[mem[64] + 64] = 0
+              mem[mem[64]] = 64
+              mem[_1361 + 224] = mem[64]
+              require 1 < mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 224] = _1361
+              mem[mem[64] + 96] = 0
+              mem[mem[64] + 128] = 0
+              mem[mem[64] + 352] = 1
+              mem[mem[64] + 384] = 0
+              mem[mem[64] + 416] = 0
+              mem[mem[64] + 448] = uint256(stor2.field_0) + 2
+              mem[mem[64] + 160] = mem[64] + 352
+              mem[mem[64] + 192] = 3
+              mem[mem[64] + 224] = 0
+              mem[mem[64] + 256] = this.address
+              mem[mem[64] + 288] = 0
+              mem[mem[64] + 480] = 0
+              mem[mem[64] + 320] = mem[64] + 480
+              require 2 < mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 256] = mem[64] + 96
+              mem[mem[64] + 512] = 1
+              mem[mem[64] + 576] = 0
+              mem[mem[64] + 608] = 0
+              mem[64] = mem[64] + 704
+              mem[_1373 + 640] = this.address
+              mem[_1373 + 672] = 1
+              mem[_1373 + 544] = _1373 + 640
+              mem[_1373 + 704] = 0xa67a6a4500000000000000000000000000000000000000000000000000000000
+              mem[_1373 + 708] = 64
+              mem[_1373 + 772] = 1
+              idx = 0
+              s = _1373 + 544
+              t = _1373 + 804
+              while idx < mem[_1373 + 512]:
+                  _1673 = mem[s]
+                  mem[t] = mem[mem[s] + 12 len 20]
+                  mem[t + 32] = mem[_1673 + 32]
+                  idx = idx + 1
+                  s = s + 32
+                  t = t + 64
+                  continue 
+              mem[_1373 + 740] = 160
+              _1672 = mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_1373 + 868] = mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              idx = 0
+              s = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 192
+              t = _1373 + (32 * _1672) + 900
+              u = _1373 + 900
+              while idx < _1672:
+                  mem[u] = t + -_1373 - 900
+                  _1782 = mem[s]
+                  require mem[mem[s]] < 9
+                  mem[t] = mem[mem[s]]
+                  mem[t + 32] = mem[_1782 + 32]
+                  _1793 = mem[_1782 + 64]
+                  mem[t + 64] = bool(mem[mem[_1782 + 64]])
+                  require mem[_1793 + 32] < 2
+                  mem[t + 96] = mem[_1793 + 32]
+                  require mem[_1793 + 64] < 2
+                  mem[t + 128] = mem[_1793 + 64]
+                  mem[t + 160] = mem[_1793 + 96]
+                  mem[t + 192] = mem[_1782 + 96]
+                  mem[t + 224] = mem[_1782 + 128]
+                  mem[t + 256] = mem[_1782 + 172 len 20]
+                  mem[t + 288] = mem[_1782 + 192]
+                  _1847 = mem[_1782 + 224]
+                  mem[t + 320] = 352
+                  _1853 = mem[_1847]
+                  mem[t + 352] = mem[_1847]
+                  v = 0
+                  while v < _1853:
+                      mem[v + t + 384] = mem[v + _1847 + 32]
+                      v = v + 32
+                      continue 
+                  if ceil32(_1853) > _1853:
+                      mem[_1853 + t + 384] = 0
+                  idx = idx + 1
+                  s = s + 32
+                  t = ceil32(_1853) + t + 384
+                  u = u + 32
+                  continue 
+              require ext_code.size(stor6)
+              call stor6.mem[mem[64] len 4] with:
+                   gas gas_remaining wei
+                  args mem[mem[64] + 4 len t + -mem[64] - 4]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              mem[mem[64] + 4] = stor6
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1822 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1822] == bool(mem[_1822])
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1869 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1869] == bool(mem[_1869])
+      else:
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 164] = this.address
+          require ext_code.size(stor1)
+          static call stor1.balanceOf(address tokenOwner) with:
+                  gas gas_remaining wei
+                 args this.address
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 160] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          require return_data.size >=′ 32
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 160] = 30
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 192] = 'SafeMath: subtraction overflow'
+          if ext_call.return_data[0] > 50000 * 10^18:
+              revert with 0, 'SafeMath: subtraction overflow', 0
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 224] = 26
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 256] = 'SafeMath: division by zero'
+          uint255(stor2.field_0) = -ext_call.return_data[0] + 50000 * 10^18 / 2
+          bool(stor2.field_255) = 0
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 292] = stor5
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 324] = -1
+          require ext_code.size(stor7)
+          call stor7.approve(address spender, uint256 tokens) with:
+               gas gas_remaining wei
+              args stor5, -1
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 288] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          require return_data.size >=′ 32
+          require ext_call.return_data[0] == bool(ext_call.return_data[0])
+          mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 292] = this.address
+          require ext_code.size(stor7)
+          static call stor7.balanceOf(address tokenOwner) with:
+                  gas gas_remaining wei
+                 args this.address
+          mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 288] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          mem[64] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288
+          require return_data.size >=′ 32
+          if ext_call.return_data[0] > uint256(stor2.field_0):
+              idx = 0
+              while idx < _param3:
+                  _597 = mem[64]
+                  mem[mem[64]] = 1
+                  mem[64] = mem[64] + 64
+                  require 0 < mem[_597]
+                  mem[_597 + 32] = this.address
+                  mem[_597 + 64] = 1
+                  mem[64] = _597 + 128
+                  mem[_597 + 96] = 5 * 10^6
+                  mem[_597 + 128] = 0x562fa0df00000000000000000000000000000000000000000000000000000000
+                  mem[_597 + 132] = stor0
+                  mem[_597 + 164] = 96
+                  mem[_597 + 228] = mem[_597]
+                  s = 0
+                  t = _597 + 32
+                  u = _597 + 260
+                  while s < mem[_597]:
+                      mem[u] = mem[t + 12 len 20]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  mem[_597 + 196] = (32 * mem[_597]) + 128
+                  mem[_597 + (32 * mem[_597]) + 260] = 1
+                  s = 0
+                  t = _597 + (32 * mem[_597]) + 292
+                  u = _597 + 96
+                  while s < 1:
+                      mem[t] = mem[u]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  require ext_code.size(stor5)
+                  call stor5.mem[mem[64] len 4] with:
+                       gas gas_remaining wei
+                      args mem[mem[64] + 4 len _597 + (32 * mem[_597]) + -mem[64] + 320]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  require ext_code.size(stor0)
+                  call stor0.0x628cb95e with: // normalizedBalance()
+                       gas gas_remaining wei
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1417 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1426 = mem[_1417]
+                  mem[mem[64] + 4] = this.address
+                  require ext_code.size(stor1)
+                  static call stor1.balanceOf(address tokenOwner) with:
+                          gas gas_remaining wei
+                         args addr(this.address)
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1468 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1483 = mem[_1468]
+                  if _1426 > mem[_1468]:
+                      if not mem[_1468]:
+                          _1535 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1535] = 26
+                          mem[_1535 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * mem[_1468] / mem[_1468] != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1566 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1566] = 26
+                          mem[_1566 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1483 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1483 / 100, 0
+                  else:
+                      if not _1426:
+                          _1536 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1536] = 26
+                          mem[_1536 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * _1426 / _1426 != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1567 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1567] = 26
+                          mem[_1567 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1426 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1426 / 100, 0
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  idx = idx + 1
+                  continue 
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _634 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_634] == bool(mem[_634])
+          else:
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 292] = stor6
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 324] = -1
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, -1
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              require return_data.size >=′ 32
+              require ext_call.return_data[0] == bool(ext_call.return_data[0])
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288] = 3
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 416] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 448] = 0
+              mem[64] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 800
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 704] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 736] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 768] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 480] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 512] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 544] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 576] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 608] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 640] = 96
+              mem[var101002] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 416
+              s = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 480
+              s = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 416
+              s = var101002
+              idx = var101003
+              while idx - 1:
+                  _1356 = mem[64]
+                  mem[64] = mem[64] + 256
+                  mem[_1356] = 0
+                  mem[_1356 + 32] = 0
+                  mem[64] = mem[64] + 128
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 704] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 736] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 768] = 0
+                  mem[_1356 + 64] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672
+                  mem[_1356 + 96] = 0
+                  mem[_1356 + 128] = 0
+                  mem[_1356 + 160] = 0
+                  mem[_1356 + 192] = 0
+                  mem[_1356 + 224] = 96
+                  mem[s + 32] = _1356
+                  s = _1356 + 64
+                  s = _1356
+                  s = s + 32
+                  idx = idx - 1
+                  continue 
+              _1340 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1340] = 1
+              mem[_1340 + 32] = 0
+              _1341 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1341] = 0
+              mem[_1341 + 32] = 0
+              mem[_1341 + 64] = 0
+              mem[_1341 + 96] = uint256(stor2.field_0)
+              mem[_1340 + 64] = _1341
+              mem[_1340 + 96] = 3
+              mem[_1340 + 128] = 0
+              mem[_1340 + 160] = this.address
+              mem[_1340 + 192] = 0
+              _1342 = mem[64]
+              mem[64] = mem[64] + 32
+              mem[_1342] = 0
+              mem[_1340 + 224] = _1342
+              require 0 < mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 320] = _1340
+              _1357 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1357] = 8
+              mem[_1357 + 32] = 0
+              _1358 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1358] = 0
+              mem[_1358 + 32] = 0
+              mem[_1358 + 64] = 0
+              mem[_1358 + 96] = 0
+              mem[_1357 + 64] = _1358
+              mem[_1357 + 96] = 0
+              mem[_1357 + 128] = 0
+              mem[_1357 + 160] = this.address
+              mem[_1357 + 192] = 0
+              _1372 = mem[64]
+              mem[mem[64] + 32] = 32
+              mem[mem[64] + 64] = 0
+              mem[mem[64]] = 64
+              mem[_1357 + 224] = mem[64]
+              require 1 < mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 352] = _1357
+              mem[mem[64] + 96] = 0
+              mem[mem[64] + 128] = 0
+              mem[mem[64] + 352] = 1
+              mem[mem[64] + 384] = 0
+              mem[mem[64] + 416] = 0
+              mem[mem[64] + 448] = uint256(stor2.field_0) + 2
+              mem[mem[64] + 160] = mem[64] + 352
+              mem[mem[64] + 192] = 3
+              mem[mem[64] + 224] = 0
+              mem[mem[64] + 256] = this.address
+              mem[mem[64] + 288] = 0
+              mem[mem[64] + 480] = 0
+              mem[mem[64] + 320] = mem[64] + 480
+              require 2 < mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 384] = mem[64] + 96
+              mem[mem[64] + 512] = 1
+              mem[mem[64] + 576] = 0
+              mem[mem[64] + 608] = 0
+              mem[64] = mem[64] + 704
+              mem[_1372 + 640] = this.address
+              mem[_1372 + 672] = 1
+              mem[_1372 + 544] = _1372 + 640
+              mem[_1372 + 704] = 0xa67a6a4500000000000000000000000000000000000000000000000000000000
+              mem[_1372 + 708] = 64
+              mem[_1372 + 772] = 1
+              idx = 0
+              s = _1372 + 544
+              t = _1372 + 804
+              while idx < mem[_1372 + 512]:
+                  _1669 = mem[s]
+                  mem[t] = mem[mem[s] + 12 len 20]
+                  mem[t + 32] = mem[_1669 + 32]
+                  idx = idx + 1
+                  s = s + 32
+                  t = t + 64
+                  continue 
+              mem[_1372 + 740] = 160
+              _1668 = mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_1372 + 868] = mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              idx = 0
+              s = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 320
+              t = _1372 + (32 * _1668) + 900
+              u = _1372 + 900
+              while idx < _1668:
+                  mem[u] = t + -_1372 - 900
+                  _1780 = mem[s]
+                  require mem[mem[s]] < 9
+                  mem[t] = mem[mem[s]]
+                  mem[t + 32] = mem[_1780 + 32]
+                  _1790 = mem[_1780 + 64]
+                  mem[t + 64] = bool(mem[mem[_1780 + 64]])
+                  require mem[_1790 + 32] < 2
+                  mem[t + 96] = mem[_1790 + 32]
+                  require mem[_1790 + 64] < 2
+                  mem[t + 128] = mem[_1790 + 64]
+                  mem[t + 160] = mem[_1790 + 96]
+                  mem[t + 192] = mem[_1780 + 96]
+                  mem[t + 224] = mem[_1780 + 128]
+                  mem[t + 256] = mem[_1780 + 172 len 20]
+                  mem[t + 288] = mem[_1780 + 192]
+                  _1845 = mem[_1780 + 224]
+                  mem[t + 320] = 352
+                  _1852 = mem[_1845]
+                  mem[t + 352] = mem[_1845]
+                  v = 0
+                  while v < _1852:
+                      mem[v + t + 384] = mem[v + _1845 + 32]
+                      v = v + 32
+                      continue 
+                  if ceil32(_1852) > _1852:
+                      mem[_1852 + t + 384] = 0
+                  idx = idx + 1
+                  s = s + 32
+                  t = ceil32(_1852) + t + 384
+                  u = u + 32
+                  continue 
+              require ext_code.size(stor6)
+              call stor6.mem[mem[64] len 4] with:
+                   gas gas_remaining wei
+                  args mem[mem[64] + 4 len t + -mem[64] - 4]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              mem[mem[64] + 4] = stor6
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1820 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1820] == bool(mem[_1820])
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1868 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1868] == bool(mem[_1868])
+  else:
+      mem[_param1.length + ceil32(_param1.length) + 160] = 0
+      mem[ceil32(_param1.length) + 128] = _param1.length
+      require 0x3573d3b804dc64c2723a25c489ad31d6acfd3bb89ae03e9df018bea83b2a5b54 == sha3(mem[ceil32(_param1.length) + 160 len Mask(8 * -ceil32(_param1.length) + _param1.length + 32, 0, 0), mem[_param1.length + 160 len -_param1.length + ceil32(_param1.length)]])
+      // ^^ 2.4177229616983905e+76
+      stor0 = addr(_param2)
+      stor3 = _param3
+      mem[_param1.length + ceil32(_param1.length) + 164] = addr(_param2)
+      require ext_code.size(stor5)
+      static call stor5.0x913dceb2 with: // poolTokenByProtocol; again, get the pool token for _param2
+              gas gas_remaining wei
+             args addr(_param2)
+      mem[_param1.length + ceil32(_param1.length) + 160] = ext_call.return_data[0]
+      if not ext_call.success:
+          revert with ext_call.return_data[0 len return_data.size]
+      require return_data.size >=′ 32
+      require ext_call.return_data[0] == ext_call.return_data[12 len 20]
+      stor1 = ext_call.return_data[12 len 20]
+      if 0x91d7b9a8d2314110d4018c88dbfdcf5e2ba4772e == addr(_param2): // if CurveFiProtocol_SUSD
+          uint256(stor2.field_0) = 800000 * 10^18
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 164] = stor5
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 196] = -1
+          require ext_code.size(stor7)
+          call stor7.approve(address spender, uint256 tokens) with:
+               gas gas_remaining wei
+              args stor5, -1
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 160] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          require return_data.size >=′ 32
+          require ext_call.return_data[0] == bool(ext_call.return_data[0])
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 164] = this.address
+          require ext_code.size(stor7)
+          static call stor7.balanceOf(address tokenOwner) with:
+                  gas gas_remaining wei
+                 args this.address
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 160] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          mem[64] = _param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 160
+          require return_data.size >=′ 32
+          if ext_call.return_data[0] > uint256(stor2.field_0):
+              idx = 0
+              while idx < _param3:
+                  _606 = mem[64]
+                  mem[mem[64]] = 1
+                  mem[64] = mem[64] + 64
+                  require 0 < mem[_606]
+                  mem[_606 + 32] = this.address
+                  mem[_606 + 64] = 1
+                  mem[64] = _606 + 128
+                  mem[_606 + 96] = 5 * 10^6
+                  mem[_606 + 128] = 0x562fa0df00000000000000000000000000000000000000000000000000000000
+                  mem[_606 + 132] = stor0
+                  mem[_606 + 164] = 96
+                  mem[_606 + 228] = mem[_606]
+                  s = 0
+                  t = _606 + 32
+                  u = _606 + 260
+                  while s < mem[_606]:
+                      mem[u] = mem[t + 12 len 20]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  mem[_606 + 196] = (32 * mem[_606]) + 128
+                  mem[_606 + (32 * mem[_606]) + 260] = 1
+                  s = 0
+                  t = _606 + (32 * mem[_606]) + 292
+                  u = _606 + 96
+                  while s < 1:
+                      mem[t] = mem[u]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  require ext_code.size(stor5)
+                  call stor5.mem[mem[64] len 4] with:
+                       gas gas_remaining wei
+                      args mem[mem[64] + 4 len _606 + (32 * mem[_606]) + -mem[64] + 320]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  require ext_code.size(stor0)
+                  call stor0.0x628cb95e with:
+                       gas gas_remaining wei
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1423 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1435 = mem[_1423]
+                  mem[mem[64] + 4] = this.address
+                  require ext_code.size(stor1)
+                  static call stor1.balanceOf(address tokenOwner) with:
+                          gas gas_remaining wei
+                         args addr(this.address)
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1471 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1495 = mem[_1471]
+                  if _1435 > mem[_1471]:
+                      if not mem[_1471]:
+                          _1550 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1550] = 26
+                          mem[_1550 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * mem[_1471] / mem[_1471] != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1578 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1578] = 26
+                          mem[_1578 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1495 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1495 / 100, 0
+                  else:
+                      if not _1435:
+                          _1551 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1551] = 26
+                          mem[_1551 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * _1435 / _1435 != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1579 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1579] = 26
+                          mem[_1579 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1435 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1435 / 100, 0
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  idx = idx + 1
+                  continue 
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _650 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_650] == bool(mem[_650])
+          else:
+              mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 164] = stor6
+              mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 196] = -1
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, -1
+              mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 160] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              require return_data.size >=′ 32
+              require ext_call.return_data[0] == bool(ext_call.return_data[0])
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160] = 3
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 320] = 0
+              mem[64] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 672
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 576] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 608] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 640] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 352] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 384] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 416] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 448] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 480] = 0
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 512] = 96
+              mem[var81002] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288
+              s = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 352
+              s = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288
+              s = var81002
+              idx = var81003
+              while idx - 1:
+                  _1368 = mem[64]
+                  mem[64] = mem[64] + 256
+                  mem[_1368] = 0
+                  mem[_1368 + 32] = 0
+                  mem[64] = mem[64] + 128
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 576] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 608] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 640] = 0
+                  mem[_1368 + 64] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 544
+                  mem[_1368 + 96] = 0
+                  mem[_1368 + 128] = 0
+                  mem[_1368 + 160] = 0
+                  mem[_1368 + 192] = 0
+                  mem[_1368 + 224] = 96
+                  mem[s + 32] = _1368
+                  s = _1368 + 64
+                  s = _1368
+                  s = s + 32
+                  idx = idx - 1
+                  continue 
+              _1352 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1352] = 1
+              mem[_1352 + 32] = 0
+              _1353 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1353] = 0
+              mem[_1353 + 32] = 0
+              mem[_1353 + 64] = 0
+              mem[_1353 + 96] = uint256(stor2.field_0)
+              mem[_1352 + 64] = _1353
+              mem[_1352 + 96] = 3
+              mem[_1352 + 128] = 0
+              mem[_1352 + 160] = this.address
+              mem[_1352 + 192] = 0
+              _1354 = mem[64]
+              mem[64] = mem[64] + 32
+              mem[_1354] = 0
+              mem[_1352 + 224] = _1354
+              require 0 < mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 192] = _1352
+              _1369 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1369] = 8
+              mem[_1369 + 32] = 0
+              _1370 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1370] = 0
+              mem[_1370 + 32] = 0
+              mem[_1370 + 64] = 0
+              mem[_1370 + 96] = 0
+              mem[_1369 + 64] = _1370
+              mem[_1369 + 96] = 0
+              mem[_1369 + 128] = 0
+              mem[_1369 + 160] = this.address
+              mem[_1369 + 192] = 0
+              _1375 = mem[64]
+              mem[mem[64] + 32] = 32
+              mem[mem[64] + 64] = 0
+              mem[mem[64]] = 64
+              mem[_1369 + 224] = mem[64]
+              require 1 < mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 224] = _1369
+              mem[mem[64] + 96] = 0
+              mem[mem[64] + 128] = 0
+              mem[mem[64] + 352] = 1
+              mem[mem[64] + 384] = 0
+              mem[mem[64] + 416] = 0
+              mem[mem[64] + 448] = uint256(stor2.field_0) + 2
+              mem[mem[64] + 160] = mem[64] + 352
+              mem[mem[64] + 192] = 3
+              mem[mem[64] + 224] = 0
+              mem[mem[64] + 256] = this.address
+              mem[mem[64] + 288] = 0
+              mem[mem[64] + 480] = 0
+              mem[mem[64] + 320] = mem[64] + 480
+              require 2 < mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 256] = mem[64] + 96
+              mem[mem[64] + 512] = 1
+              mem[mem[64] + 576] = 0
+              mem[mem[64] + 608] = 0
+              mem[64] = mem[64] + 704
+              mem[_1375 + 640] = this.address
+              mem[_1375 + 672] = 1
+              mem[_1375 + 544] = _1375 + 640
+              mem[_1375 + 704] = 0xa67a6a4500000000000000000000000000000000000000000000000000000000
+              mem[_1375 + 708] = 64
+              mem[_1375 + 772] = 1
+              idx = 0
+              s = _1375 + 544
+              t = _1375 + 804
+              while idx < mem[_1375 + 512]:
+                  _1681 = mem[s]
+                  mem[t] = mem[mem[s] + 12 len 20]
+                  mem[t + 32] = mem[_1681 + 32]
+                  idx = idx + 1
+                  s = s + 32
+                  t = t + 64
+                  continue 
+              mem[_1375 + 740] = 160
+              _1680 = mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              mem[_1375 + 868] = mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 160]
+              idx = 0
+              s = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 192
+              t = _1375 + (32 * _1680) + 900
+              u = _1375 + 900
+              while idx < _1680:
+                  mem[u] = t + -_1375 - 900
+                  _1786 = mem[s]
+                  require mem[mem[s]] < 9
+                  mem[t] = mem[mem[s]]
+                  mem[t + 32] = mem[_1786 + 32]
+                  _1799 = mem[_1786 + 64]
+                  mem[t + 64] = bool(mem[mem[_1786 + 64]])
+                  require mem[_1799 + 32] < 2
+                  mem[t + 96] = mem[_1799 + 32]
+                  require mem[_1799 + 64] < 2
+                  mem[t + 128] = mem[_1799 + 64]
+                  mem[t + 160] = mem[_1799 + 96]
+                  mem[t + 192] = mem[_1786 + 96]
+                  mem[t + 224] = mem[_1786 + 128]
+                  mem[t + 256] = mem[_1786 + 172 len 20]
+                  mem[t + 288] = mem[_1786 + 192]
+                  _1851 = mem[_1786 + 224]
+                  mem[t + 320] = 352
+                  _1855 = mem[_1851]
+                  mem[t + 352] = mem[_1851]
+                  v = 0
+                  while v < _1855:
+                      mem[v + t + 384] = mem[v + _1851 + 32]
+                      v = v + 32
+                      continue 
+                  if ceil32(_1855) > _1855:
+                      mem[_1855 + t + 384] = 0
+                  idx = idx + 1
+                  s = s + 32
+                  t = ceil32(_1855) + t + 384
+                  u = u + 32
+                  continue 
+              require ext_code.size(stor6)
+              call stor6.mem[mem[64] len 4] with:
+                   gas gas_remaining wei
+                  args mem[mem[64] + 4 len t + -mem[64] - 4]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              mem[mem[64] + 4] = stor6
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1826 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1826] == bool(mem[_1826])
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1871 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1871] == bool(mem[_1871])
+      else:
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 164] = this.address
+          require ext_code.size(stor1)
+          static call stor1.balanceOf(address tokenOwner) with:
+                  gas gas_remaining wei
+                 args this.address
+          mem[_param1.length + ceil32(_param1.length) + ceil32(return_data.size) + 160] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          require return_data.size >=′ 32
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 160] = 30
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 192] = 'SafeMath: subtraction overflow'
+          if ext_call.return_data[0] > 50000 * 10^18:
+              revert with 0, 'SafeMath: subtraction overflow', 0
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 224] = 26
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 256] = 'SafeMath: division by zero'
+          uint255(stor2.field_0) = -ext_call.return_data[0] + 50000 * 10^18 / 2
+          bool(stor2.field_255) = 0
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 292] = stor5
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 324] = -1
+          require ext_code.size(stor7)
+          call stor7.approve(address spender, uint256 tokens) with:
+               gas gas_remaining wei
+              args stor5, -1
+          mem[_param1.length + ceil32(_param1.length) + (2 * ceil32(return_data.size)) + 288] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          require return_data.size >=′ 32
+          require ext_call.return_data[0] == bool(ext_call.return_data[0])
+          mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 292] = this.address
+          require ext_code.size(stor7)
+          static call stor7.balanceOf(address tokenOwner) with:
+                  gas gas_remaining wei
+                 args this.address
+          mem[_param1.length + ceil32(_param1.length) + (4 * ceil32(return_data.size)) + 288] = ext_call.return_data[0]
+          if not ext_call.success:
+              revert with ext_call.return_data[0 len return_data.size]
+          mem[64] = _param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288
+          require return_data.size >=′ 32
+          if ext_call.return_data[0] > uint256(stor2.field_0):
+              idx = 0
+              while idx < _param3:
+                  _603 = mem[64]
+                  mem[mem[64]] = 1
+                  mem[64] = mem[64] + 64
+                  require 0 < mem[_603]
+                  mem[_603 + 32] = this.address
+                  mem[_603 + 64] = 1
+                  mem[64] = _603 + 128
+                  mem[_603 + 96] = 5 * 10^6 // that below is deposit on savings module
+                  mem[_603 + 128] = 0x562fa0df00000000000000000000000000000000000000000000000000000000
+                  mem[_603 + 132] = stor0
+                  mem[_603 + 164] = 96
+                  mem[_603 + 228] = mem[_603]
+                  s = 0
+                  t = _603 + 32
+                  u = _603 + 260
+                  while s < mem[_603]:
+                      mem[u] = mem[t + 12 len 20]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  mem[_603 + 196] = (32 * mem[_603]) + 128
+                  mem[_603 + (32 * mem[_603]) + 260] = 1
+                  s = 0
+                  t = _603 + (32 * mem[_603]) + 292
+                  u = _603 + 96
+                  while s < 1:
+                      mem[t] = mem[u]
+                      s = s + 1
+                      t = t + 32
+                      u = u + 32
+                      continue 
+                  require ext_code.size(stor5)
+                  call stor5.mem[mem[64] len 4] with:
+                       gas gas_remaining wei
+                      args mem[mem[64] + 4 len _603 + (32 * mem[_603]) + -mem[64] + 320]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  require ext_code.size(stor0)
+                  call stor0.0x628cb95e with:
+                       gas gas_remaining wei
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1421 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1432 = mem[_1421]
+                  mem[mem[64] + 4] = this.address
+                  require ext_code.size(stor1)
+                  static call stor1.balanceOf(address tokenOwner) with:
+                          gas gas_remaining wei
+                         args addr(this.address)
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  _1470 = mem[64]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  _1491 = mem[_1470]
+                  if _1432 > mem[_1470]:
+                      if not mem[_1470]:
+                          _1545 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1545] = 26
+                          mem[_1545 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * mem[_1470] / mem[_1470] != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1574 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1574] = 26
+                          mem[_1574 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1491 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1491 / 100, 0
+                  else:
+                      if not _1432:
+                          _1546 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1546] = 26
+                          mem[_1546 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 0
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 0, 0
+                      else:
+                          if 99 * _1432 / _1432 != 99:
+                              revert with 0, 'SafeMath: multiplication overflow'
+                          _1575 = mem[64]
+                          mem[64] = mem[64] + 64
+                          mem[_1575] = 26
+                          mem[_1575 + 32] = 'SafeMath: division by zero'
+                          mem[mem[64] + 4] = stor0
+                          mem[mem[64] + 36] = stor7
+                          mem[mem[64] + 68] = 99 * _1432 / 100
+                          mem[mem[64] + 100] = 0
+                          require ext_code.size(stor5)
+                          call stor5.withdraw(address account, address tokenAddr, uint256 index_from, uint256 index_to) with:
+                               gas gas_remaining wei
+                              args stor0, stor7, 99 * _1432 / 100, 0
+                  mem[mem[64]] = ext_call.return_data[0]
+                  if not ext_call.success:
+                      revert with ext_call.return_data[0 len return_data.size]
+                  mem[64] = mem[64] + ceil32(return_data.size)
+                  require return_data.size >=′ 32
+                  idx = idx + 1
+                  continue 
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _644 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_644] == bool(mem[_644])
+          else:
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 292] = stor6
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 324] = -1
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, -1
+              mem[_param1.length + ceil32(_param1.length) + (6 * ceil32(return_data.size)) + 288] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              require return_data.size >=′ 32
+              require ext_call.return_data[0] == bool(ext_call.return_data[0])
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288] = 3
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 416] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 448] = 0
+              mem[64] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 800
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 704] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 736] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 768] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 480] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 512] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 544] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 576] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 608] = 0
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 640] = 96
+              mem[var101002] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 416
+              s = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 480
+              s = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 416
+              s = var101002
+              idx = var101003
+              while idx - 1:
+                  _1364 = mem[64]
+                  mem[64] = mem[64] + 256
+                  mem[_1364] = 0
+                  mem[_1364 + 32] = 0
+                  mem[64] = mem[64] + 128
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 704] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 736] = 0
+                  mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 768] = 0
+                  mem[_1364 + 64] = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 672
+                  mem[_1364 + 96] = 0
+                  mem[_1364 + 128] = 0
+                  mem[_1364 + 160] = 0
+                  mem[_1364 + 192] = 0
+                  mem[_1364 + 224] = 96
+                  mem[s + 32] = _1364
+                  s = _1364 + 64
+                  s = _1364
+                  s = s + 32
+                  idx = idx - 1
+                  continue 
+              _1348 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1348] = 1
+              mem[_1348 + 32] = 0
+              _1349 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1349] = 0
+              mem[_1349 + 32] = 0
+              mem[_1349 + 64] = 0
+              mem[_1349 + 96] = uint256(stor2.field_0)
+              mem[_1348 + 64] = _1349
+              mem[_1348 + 96] = 3
+              mem[_1348 + 128] = 0
+              mem[_1348 + 160] = this.address
+              mem[_1348 + 192] = 0
+              _1350 = mem[64]
+              mem[64] = mem[64] + 32
+              mem[_1350] = 0
+              mem[_1348 + 224] = _1350
+              require 0 < mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 320] = _1348
+              _1365 = mem[64]
+              mem[64] = mem[64] + 256
+              mem[_1365] = 8
+              mem[_1365 + 32] = 0
+              _1366 = mem[64]
+              mem[64] = mem[64] + 128
+              mem[_1366] = 0
+              mem[_1366 + 32] = 0
+              mem[_1366 + 64] = 0
+              mem[_1366 + 96] = 0
+              mem[_1365 + 64] = _1366
+              mem[_1365 + 96] = 0
+              mem[_1365 + 128] = 0
+              mem[_1365 + 160] = this.address
+              mem[_1365 + 192] = 0
+              _1374 = mem[64]
+              mem[mem[64] + 32] = 32
+              mem[mem[64] + 64] = 0
+              mem[mem[64]] = 64
+              mem[_1365 + 224] = mem[64]
+              require 1 < mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 352] = _1365
+              mem[mem[64] + 96] = 0
+              mem[mem[64] + 128] = 0
+              mem[mem[64] + 352] = 1
+              mem[mem[64] + 384] = 0
+              mem[mem[64] + 416] = 0
+              mem[mem[64] + 448] = uint256(stor2.field_0) + 2
+              mem[mem[64] + 160] = mem[64] + 352
+              mem[mem[64] + 192] = 3
+              mem[mem[64] + 224] = 0
+              mem[mem[64] + 256] = this.address
+              mem[mem[64] + 288] = 0
+              mem[mem[64] + 480] = 0
+              mem[mem[64] + 320] = mem[64] + 480
+              require 2 < mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 384] = mem[64] + 96
+              mem[mem[64] + 512] = 1
+              mem[mem[64] + 576] = 0
+              mem[mem[64] + 608] = 0
+              mem[64] = mem[64] + 704
+              mem[_1374 + 640] = this.address
+              mem[_1374 + 672] = 1
+              mem[_1374 + 544] = _1374 + 640
+              mem[_1374 + 704] = 0xa67a6a4500000000000000000000000000000000000000000000000000000000
+              mem[_1374 + 708] = 64
+              mem[_1374 + 772] = 1
+              idx = 0
+              s = _1374 + 544
+              t = _1374 + 804
+              while idx < mem[_1374 + 512]:
+                  _1677 = mem[s]
+                  mem[t] = mem[mem[s] + 12 len 20]
+                  mem[t + 32] = mem[_1677 + 32]
+                  idx = idx + 1
+                  s = s + 32
+                  t = t + 64
+                  continue 
+              mem[_1374 + 740] = 160
+              _1676 = mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              mem[_1374 + 868] = mem[_param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 288]
+              idx = 0
+              s = _param1.length + ceil32(_param1.length) + (7 * ceil32(return_data.size)) + 320
+              t = _1374 + (32 * _1676) + 900
+              u = _1374 + 900
+              while idx < _1676:
+                  mem[u] = t + -_1374 - 900
+                  _1784 = mem[s]
+                  require mem[mem[s]] < 9
+                  mem[t] = mem[mem[s]]
+                  mem[t + 32] = mem[_1784 + 32]
+                  _1796 = mem[_1784 + 64]
+                  mem[t + 64] = bool(mem[mem[_1784 + 64]])
+                  require mem[_1796 + 32] < 2
+                  mem[t + 96] = mem[_1796 + 32]
+                  require mem[_1796 + 64] < 2
+                  mem[t + 128] = mem[_1796 + 64]
+                  mem[t + 160] = mem[_1796 + 96]
+                  mem[t + 192] = mem[_1784 + 96]
+                  mem[t + 224] = mem[_1784 + 128]
+                  mem[t + 256] = mem[_1784 + 172 len 20]
+                  mem[t + 288] = mem[_1784 + 192]
+                  _1849 = mem[_1784 + 224]
+                  mem[t + 320] = 352
+                  _1854 = mem[_1849]
+                  mem[t + 352] = mem[_1849]
+                  v = 0
+                  while v < _1854:
+                      mem[v + t + 384] = mem[v + _1849 + 32]
+                      v = v + 32
+                      continue 
+                  if ceil32(_1854) > _1854:
+                      mem[_1854 + t + 384] = 0
+                  idx = idx + 1
+                  s = s + 32
+                  t = ceil32(_1854) + t + 384
+                  u = u + 32
+                  continue 
+              require ext_code.size(stor6)
+              call stor6.mem[mem[64] len 4] with:
+                   gas gas_remaining wei
+                  args mem[mem[64] + 4 len t + -mem[64] - 4]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              mem[mem[64] + 4] = stor6
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor6, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1824 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1824] == bool(mem[_1824])
+              mem[mem[64] + 4] = stor5
+              mem[mem[64] + 36] = 0
+              require ext_code.size(stor7)
+              call stor7.approve(address spender, uint256 tokens) with:
+                   gas gas_remaining wei
+                  args stor5, 0
+              mem[mem[64]] = ext_call.return_data[0]
+              if not ext_call.success:
+                  revert with ext_call.return_data[0 len return_data.size]
+              _1870 = mem[64]
+              mem[64] = mem[64] + ceil32(return_data.size)
+              require return_data.size >=′ 32
+              require mem[_1870] == bool(mem[_1870])
